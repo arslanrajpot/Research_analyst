@@ -1,0 +1,47 @@
+fastapi==0.115.0
+uvicorn==0.30.6
+
+# Core LangChain ecosystem - Updated to latest versions
+langchain==0.3.0
+langchain-core==0.3.63
+langgraph==0.2.24
+langchain-groq==0.2.0
+langchain-community==0.3.0
+langchain-huggingface==0.1.0
+langchain-pinecone==0.2.0
+langsmith==0.1.147
+
+# Vector DB
+pinecone-client==5.0.1
+
+# NLP embeddings
+sentence-transformers==3.1.1
+
+# DB + cache
+sqlalchemy==2.0.35
+redis==5.0.8
+aiosqlite==0.20.0
+
+# Config & typing
+python-dotenv==1.0.1
+pydantic==2.9.2
+pydantic[email]==2.9.2
+
+# Authentication & Security
+python-jose[cryptography]==3.5.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.20
+google-auth==2.28.1
+google-auth-oauthlib==1.2.0
+google-auth-httplib2==0.2.0
+
+# HTTP and web scraping
+requests==2.32.3
+beautifulsoup4==4.12.3
+aiohttp==3.9.5
+
+# Retry logic
+tenacity==8.2.3
+
+# LangGraph checkpoint
+langgraph-checkpoint-sqlite==1.0.4
