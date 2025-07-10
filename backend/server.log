@@ -1,0 +1,78 @@
+Redis not available: Error 61 connecting to localhost:6379. Connection refused.
+Redis not available: Error 61 connecting to localhost:6379. Connection refused.
+INFO:pinecone_plugin_interface.logging:Discovering subpackages in _NamespacePath(['/Users/macbookpro/Documents/AI-training/Research_analyst_setup/market_research_generator/backend/venv/lib/python3.11/site-packages/pinecone_plugins'])
+INFO:pinecone_plugin_interface.logging:Looking for plugins in pinecone_plugins.inference
+INFO:pinecone_plugin_interface.logging:Installing plugin inference into Pinecone
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: mps
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-MiniLM-L6-v2
+INFO:pinecone_plugin_interface.logging:Discovering subpackages in _NamespacePath(['/Users/macbookpro/Documents/AI-training/Research_analyst_setup/market_research_generator/backend/venv/lib/python3.11/site-packages/pinecone_plugins'])
+INFO:pinecone_plugin_interface.logging:Looking for plugins in pinecone_plugins.inference
+INFO:pinecone_plugin_interface.logging:Installing plugin inference into Pinecone
+INFO:routers.research:Pinecone initialized successfully
+INFO:     Started server process [28139]
+INFO:     Waiting for application startup.
+2025-09-05 04:51:48,402 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-09-05 04:51:48,402 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("users")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("users")
+2025-09-05 04:51:48,402 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2025-09-05 04:51:48,402 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user_sessions")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("user_sessions")
+2025-09-05 04:51:48,402 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2025-09-05 04:51:48,403 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("reports")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("reports")
+2025-09-05 04:51:48,403 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2025-09-05 04:51:48,403 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("documents")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("documents")
+2025-09-05 04:51:48,403 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2025-09-05 04:51:48,403 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("templates")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("templates")
+2025-09-05 04:51:48,403 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2025-09-05 04:51:48,403 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("template_shares")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("template_shares")
+2025-09-05 04:51:48,403 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2025-09-05 04:51:48,404 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("template_usage")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("template_usage")
+2025-09-05 04:51:48,404 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2025-09-05 04:51:48,404 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("template_ratings")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("template_ratings")
+2025-09-05 04:51:48,404 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2025-09-05 04:51:48,404 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("notifications")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("notifications")
+2025-09-05 04:51:48,404 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2025-09-05 04:51:48,404 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("messages")
+INFO:sqlalchemy.engine.Engine:PRAGMA main.table_info("messages")
+2025-09-05 04:51:48,404 INFO sqlalchemy.engine.Engine [raw sql] ()
+INFO:sqlalchemy.engine.Engine:[raw sql] ()
+2025-09-05 04:51:48,405 INFO sqlalchemy.engine.Engine COMMIT
+INFO:sqlalchemy.engine.Engine:COMMIT
+/Users/macbookpro/Documents/AI-training/Research_analyst_setup/market_research_generator/backend/populate_templates.py:33: SAWarning: relationship 'Template.child_templates' will copy column templates.id to column templates.parent_id, which conflicts with relationship(s): 'Template.parent_template' (copies templates.id to templates.parent_id). If this is not the intention, consider if these relationships should be linked with back_populates, or if viewonly=True should be applied to one or more if they are read-only. For the less common case that foreign key constraints are partially overlapping, the orm.foreign() annotation can be used to isolate the columns that should be written towards.   To silence this warning, add the parameter 'overlaps="parent_template"' to the 'Template.child_templates' relationship. (Background on this warning at: https://sqlalche.me/e/20/qzyx) (This warning originated from the `configure_mappers()` process, which was invoked automatically in response to a user-initiated operation.)
+  existing_templates = db.query(Template).filter(Template.is_public == True).count()
+2025-09-05 04:51:48,424 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+INFO:sqlalchemy.engine.Engine:BEGIN (implicit)
+2025-09-05 04:51:48,430 INFO sqlalchemy.engine.Engine SELECT count(*) AS count_1 
+FROM (SELECT templates.id AS templates_id, templates.name AS templates_name, templates.description AS templates_description, templates.category AS templates_category, templates.icon AS templates_icon, templates.prompts AS templates_prompts, templates.variables AS templates_variables, templates.structure AS templates_structure, templates.is_public AS templates_is_public, templates.is_featured AS templates_is_featured, templates.estimated_time AS templates_estimated_time, templates.difficulty_level AS templates_difficulty_level, templates.version AS templates_version, templates.parent_id AS templates_parent_id, templates.user_id AS templates_user_id, templates.created_at AS templates_created_at, templates.updated_at AS templates_updated_at, templates.usage_count AS templates_usage_count, templates.rating AS templates_rating, templates.rating_count AS templates_rating_count 
+FROM templates 
+WHERE templates.is_public = 1) AS anon_1
+INFO:sqlalchemy.engine.Engine:SELECT count(*) AS count_1 
+FROM (SELECT templates.id AS templates_id, templates.name AS templates_name, templates.description AS templates_description, templates.category AS templates_category, templates.icon AS templates_icon, templates.prompts AS templates_prompts, templates.variables AS templates_variables, templates.structure AS templates_structure, templates.is_public AS templates_is_public, templates.is_featured AS templates_is_featured, templates.estimated_time AS templates_estimated_time, templates.difficulty_level AS templates_difficulty_level, templates.version AS templates_version, templates.parent_id AS templates_parent_id, templates.user_id AS templates_user_id, templates.created_at AS templates_created_at, templates.updated_at AS templates_updated_at, templates.usage_count AS templates_usage_count, templates.rating AS templates_rating, templates.rating_count AS templates_rating_count 
+FROM templates 
+WHERE templates.is_public = 1) AS anon_1
+2025-09-05 04:51:48,430 INFO sqlalchemy.engine.Engine [generated in 0.00018s] ()
+INFO:sqlalchemy.engine.Engine:[generated in 0.00018s] ()
+✅ 12 global templates already exist in database
+2025-09-05 04:51:48,431 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:sqlalchemy.engine.Engine:ROLLBACK
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
