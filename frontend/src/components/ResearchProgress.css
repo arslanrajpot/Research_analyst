@@ -1,0 +1,273 @@
+/* Research Progress Overlay */
+.research-progress-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.research-progress-modal {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow: hidden;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Progress Header */
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.progress-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.progress-title h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.connection-indicator {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.connection-indicator.connected {
+  background: rgba(76, 175, 80, 0.3);
+}
+
+.connection-indicator.error {
+  background: rgba(244, 67, 54, 0.3);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Progress Content */
+.progress-content {
+  padding: 20px;
+}
+
+.overall-progress {
+  margin-bottom: 25px;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #2196f3;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.progress-text {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.progress-percentage {
+  color: #2196f3;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #8bc34a);
+  border-radius: 6px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Subtasks Grid */
+.subtasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.subtask-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border-left: 4px solid #e0e0e0;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.subtask-card.pending {
+  background: #f5f5f5;
+  border-left-color: #9e9e9e;
+}
+
+.subtask-card.in_progress {
+  background: #e3f2fd;
+  border-left-color: #2196f3;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.2);
+  transform: scale(1.02);
+}
+
+.subtask-card.completed {
+  background: #e8f5e8;
+  border-left-color: #4caf50;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+}
+
+.subtask-card.error {
+  background: #ffebee;
+  border-left-color: #f44336;
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.2);
+}
+
+.subtask-icon {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.subtask-content {
+  flex: 1;
+}
+
+.subtask-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.subtask-description {
+  color: #666;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Status Message */
+.status-message {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+  font-style: italic;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #9e9e9e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .research-progress-modal {
+    width: 95%;
+    margin: 10px;
+  }
+  
+  .subtasks-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .progress-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .progress-title h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
