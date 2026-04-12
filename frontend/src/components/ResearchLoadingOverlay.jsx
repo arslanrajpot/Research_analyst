@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './ResearchLoadingOverlay.css';
 
+const apiBaseUrl = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+const wsBaseUrl = apiBaseUrl.replace(/^http/i, 'ws').replace(/\/$/, '');
+
 const ResearchLoadingOverlay = ({ isVisible, onClose, query }) => {
   const [connectionStatus, setConnectionStatus] = useState('disconnected');
   const [currentStage, setCurrentStage] = useState('');
@@ -17,13 +20,14 @@ const ResearchLoadingOverlay = ({ isVisible, onClose, query }) => {
 
     // Connect to WebSocket with retry logic
     let websocket;
+    let shouldReconnect = true;
     let reconnectAttempts = 0;
     const maxReconnectAttempts = 5;
     const reconnectDelay = 2000;
 
     const connectWebSocket = () => {
       try {
-        websocket = new WebSocket('ws://localhost:8000/ws/research-client');
+        websocket = new WebSocket(`${wsBaseUrl}/ws/research-client`);
         
         websocket.onopen = () => {
           console.log('WebSocket connected for research loading');
@@ -101,8 +105,8 @@ const ResearchLoadingOverlay = ({ isVisible, onClose, query }) => {
           console.log('WebSocket disconnected');
           setConnectionStatus('disconnected');
           
-          // Attempt to reconnect if not manually closed
-          if (reconnectAttempts < maxReconnectAttempts) {
+          // Avoid reconnect loops during React dev unmount/remount cycles.
+          if (shouldReconnect && reconnectAttempts < maxReconnectAttempts) {
             reconnectAttempts++;
             console.log(`Attempting to reconnect... (${reconnectAttempts}/${maxReconnectAttempts})`);
             setTimeout(connectWebSocket, reconnectDelay);
@@ -134,6 +138,7 @@ const ResearchLoadingOverlay = ({ isVisible, onClose, query }) => {
     }, 30000);
 
     return () => {
+      shouldReconnect = false;
       clearInterval(pingInterval);
       if (websocket) {
         websocket.close();
