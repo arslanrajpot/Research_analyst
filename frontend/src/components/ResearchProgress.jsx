@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './ResearchProgress.css';
 
+const apiBaseUrl = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
+const wsBaseUrl = apiBaseUrl.replace(/^http/i, 'ws').replace(/\/$/, '');
+
 const ResearchProgress = ({ isVisible, onClose }) => {
   const [connectionStatus, setConnectionStatus] = useState('disconnected');
   const [subtasks, setSubtasks] = useState({});
@@ -12,7 +15,7 @@ const ResearchProgress = ({ isVisible, onClose }) => {
     if (!isVisible) return;
 
     // Connect to WebSocket
-    const websocket = new WebSocket('ws://localhost:8000/ws/research-client');
+    const websocket = new WebSocket(`${wsBaseUrl}/ws/research-client`);
     
     // Send connection message to establish connection
     websocket.onopen = () => {
